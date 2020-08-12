@@ -1,15 +1,19 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
-import { showAllEpisodes } from "../store/actions";
+import axios from "axios";
 
 const Episodes = () => {
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state.episodes.results);
+  const [data, setdata] = useState([]);
 
   useEffect(() => {
-    dispatch(showAllEpisodes());
-  }, [dispatch]);
+    const fetchData = async () => {
+      const result = await axios("https://rickandmortyapi.com/api/episode");
+
+      setdata(result.data.results);
+    };
+    fetchData();
+  }, []);
 
   console.log(data);
   if (!data) {
