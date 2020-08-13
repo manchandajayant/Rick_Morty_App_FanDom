@@ -1,25 +1,36 @@
 import React, { useEffect, useState, useCallback } from "react";
-
 import { Link } from "react-router-dom";
+
 import axios from "axios";
 
-const Episodes = () => {
+const Homepage = () => {
   const [info, setInfo] = useState({});
-  const [episodes, setEpisodes] = useState([]);
+  const [data, setData] = useState([]);
+  const [query, setQuery] = useState("episode");
+  const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(1);
 
-  const fetchEpisodes = useCallback(async () => {
+  const fetchData = useCallback(async () => {
     const result = await axios(
-      `https://rickandmortyapi.com/api/episode/?page=${page}`
+      `https://rickandmortyapi.com/api/${query}/?page=${page}&name=${searchQuery}`
     );
-    console.log(result.data.info);
+    console.log(result.data);
     setInfo(result.data.info);
-    setEpisodes(result.data.results);
-  }, [page]);
+    setData(result.data.results);
+  }, [page, query, searchQuery]);
 
   useEffect(() => {
-    fetchEpisodes();
-  }, [fetchEpisodes]);
+    fetchData();
+  }, [fetchData]);
+
+  const searchSubmit = (e) => {
+    e.preventDefault();
+    setSearchQuery(e.target.value);
+  };
+
+  const querySelector = (event) => {
+    setQuery(event.target.value);
+  };
 
   const nextPageHandler = () => {
     return page <= info.pages ? setPage(page + 1) : setPage(1);
@@ -29,21 +40,33 @@ const Episodes = () => {
     return page > 1 ? setPage(page - 1) : setPage(info.pages);
   };
 
-  if (episodes.length < 1) {
+  if (data.length < 1) {
     return <h1>Loading...</h1>;
   } else {
     return (
       <div>
-        {episodes.map((episode, index) => {
+        <div>
+          <select value={query} onChange={querySelector}>
+            <option label="episodes">episode</option>
+            <option label="characters">character</option>
+            <option label="locations">location</option>
+          </select>
+        </div>
+
+        <input onChange={searchSubmit}></input>
+
+        {data.map((data, index) => {
           return (
             <div key={index}>
               <h1>
-                <Link to={`/episodes/${episode.id}`}>{episode.name}</Link>
+                <Link to={`/${query}/${data.id}`}>{data.name}</Link>
               </h1>
-              <h2>{episode.episode}</h2>
+
+              <h2>{data.episode}</h2>
             </div>
           );
         })}
+
         <button onClick={prevPageHandler}>prev</button>
         <button onClick={nextPageHandler}>next</button>
       </div>
@@ -51,4 +74,4 @@ const Episodes = () => {
   }
 };
 
-export default Episodes;
+export default Homepage;

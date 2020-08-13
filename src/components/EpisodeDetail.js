@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
+
 import axios from "axios";
 
 var arrayOfCharacterNumbers = [];
@@ -55,7 +56,7 @@ const EpisodeDetail = () => {
             return (
               <div key={index}>
                 <h4>
-                  <Link to={`/characters/${character.id}`}>
+                  <Link to={`/character/${character.id}`}>
                     {character.name}
                   </Link>
                 </h4>
