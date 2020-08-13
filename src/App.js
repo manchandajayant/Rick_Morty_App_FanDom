@@ -5,11 +5,12 @@ import EpisodeDetail from "./components/EpisodeDetail";
 import CharacterDetail from "./components/CharacterDetail";
 import LocationDetail from "./components/LocationDetail";
 import Homepage from "./components/Homepage";
-
+import "./css/app.css";
 function App() {
   return (
-    <div className="App">
+    <div>
       <h1>Rick and Morty App</h1>
+
       <Route exact path="/" component={Homepage} />
       <Route exact path="/data" component={Data} />
       <Route exact path="/episode/:id" component={EpisodeDetail} />

@@ -2,6 +2,8 @@ import React, { useEffect, useState, useCallback } from "react";
 
 import axios from "axios";
 
+import { TextField } from "@material-ui/core";
+
 import ShowAllEpisodes from "./showAllEpisodes";
 import ShowAllLocations from "./showAllLocations";
 import ShowAllCharacters from "./showAllCharacters";
@@ -57,7 +59,7 @@ const Data = () => {
     return <h1>Loading...</h1>;
   } else if (query === "episode") {
     return (
-      <div>
+      <>
         <select value={query} onChange={querySelector}>
           <option label="episodes">episode</option>
           <option label="characters">character</option>
@@ -65,7 +67,7 @@ const Data = () => {
         </select>
         <input onChange={searchSubmit}></input>
         <ShowAllEpisodes {...props} />
-      </div>
+      </>
     );
   } else if (query === "character") {
     return (
@@ -75,7 +77,18 @@ const Data = () => {
           <option label="characters">character</option>
           <option label="locations">location</option>
         </select>
-        <input onChange={searchSubmit}></input>
+
+        <TextField
+          id="filled-full-width"
+          label="search for a character..."
+          onChange={searchSubmit}
+          style={{ margin: 12, paddingRight: "2%" }}
+          placeholder="search for a character..."
+          fullWidth
+          margin="normal"
+          variant="filled"
+        />
+
         <ShowAllCharacters {...props} />
       </div>
     );
