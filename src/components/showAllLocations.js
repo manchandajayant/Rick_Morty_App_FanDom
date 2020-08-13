@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ShowAllEpisodes = (props) => {
+const ShowAllLocations = (props) => {
   const { query, data, prevPageHandler, nextPageHandler, page } = props;
 
-  console.log(props.data);
   return (
     <div>
       {" "}
-      <div class="chr">
+      <div>
         {data.map((data, index) => {
           return (
             <div key={index}>
@@ -28,4 +27,4 @@ const ShowAllEpisodes = (props) => {
   );
 };
 
-export default ShowAllEpisodes;
+export default ShowAllLocations;

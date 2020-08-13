@@ -27,7 +27,7 @@ const CharacterDetail = () => {
     return <h1>Loading...</h1>;
   } else {
     const locationId = parseInt(character.location.url.match(/\d+/));
-
+    console.log(locationId);
     return (
       <div>
         <h2>Name:{character.name}</h2>

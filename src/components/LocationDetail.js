@@ -34,8 +34,9 @@ const LocationDetail = () => {
       const result = await axios(
         `https://rickandmortyapi.com/api/character/${extractNumbersFromUrlString}`
       );
-
-      setResidents(result.data);
+      Array.isArray(result.data)
+        ? setResidents(result.data)
+        : setResidents([result.data]);
     };
     fetchResidents();
   }, [location.residents]);

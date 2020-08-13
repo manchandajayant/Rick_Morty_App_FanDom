@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ShowAllEpisodes = (props) => {
+const ShowAllCharacters = (props) => {
   const { query, data, prevPageHandler, nextPageHandler, page } = props;
 
-  console.log(props.data);
   return (
     <div>
       {" "}
-      <div class="chr">
+      <div>
         {data.map((data, index) => {
           return (
             <div key={index}>
@@ -16,7 +15,7 @@ const ShowAllEpisodes = (props) => {
                 <Link to={`/${query}/${data.id}`}>{data.name}</Link>
               </h1>
 
-              <h2>{data.episode}</h2>
+              <img alt={data.name} src={data.image} />
             </div>
           );
         })}
@@ -28,4 +27,4 @@ const ShowAllEpisodes = (props) => {
   );
 };
 
-export default ShowAllEpisodes;
+export default ShowAllCharacters;

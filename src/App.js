@@ -1,15 +1,17 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Homepage from "./components/showAllEpisodes";
+import Data from "./components/data";
 import EpisodeDetail from "./components/EpisodeDetail";
 import CharacterDetail from "./components/CharacterDetail";
 import LocationDetail from "./components/LocationDetail";
+import Homepage from "./components/Homepage";
 
 function App() {
   return (
     <div className="App">
       <h1>Rick and Morty App</h1>
       <Route exact path="/" component={Homepage} />
+      <Route exact path="/data" component={Data} />
       <Route exact path="/episode/:id" component={EpisodeDetail} />
       <Route exact path="/character/:id" component={CharacterDetail} />
       <Route exact path="/location/:id" component={LocationDetail} />
