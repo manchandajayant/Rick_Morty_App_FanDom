@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 import { Grid } from "@material-ui/core";
 
 import LayoutForCharacters from "./LayoutForCharacters";
+
 const ShowAllCharacters = (props) => {
   const { data, prevPageHandler, nextPageHandler, page } = props;
 

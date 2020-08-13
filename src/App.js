@@ -1,9 +1,9 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import Data from "./components/data";
-import EpisodeDetail from "./components/EpisodeDetail";
-import CharacterDetail from "./components/CharacterDetail";
-import LocationDetail from "./components/LocationDetail";
+import EpisodeDetail from "./components/Episodes/EpisodeDetail";
+import CharacterDetail from "./components/Characters/CharacterDetail";
+import LocationDetail from "./components/Locations/LocationDetail";
 import Homepage from "./components/Homepage";
 import "./css/app.css";
 function App() {

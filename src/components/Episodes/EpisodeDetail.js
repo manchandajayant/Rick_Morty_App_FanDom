@@ -1,7 +1,11 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect, useState, useCallback, Fragment } from "react";
+import { useParams } from "react-router-dom";
 
 import axios from "axios";
+
+import { Grid } from "@material-ui/core";
+
+import LayoutForCharacters from "../Characters/LayoutForCharacters";
 
 var arrayOfCharacterNumbers = [];
 
@@ -43,7 +47,15 @@ const EpisodeDetail = () => {
     }
   }, [episode, fetchAndExtract]);
 
-  console.log(characters);
+  const characterCard = characters.map((propsObject, index) => {
+    return (
+      <Fragment key={index}>
+        <Grid item xs={12} sm={6} md={4}>
+          <LayoutForCharacters {...propsObject} />
+        </Grid>
+      </Fragment>
+    );
+  });
   if (!load) {
     return <div>Loading...</div>;
   } else {
@@ -52,18 +64,9 @@ const EpisodeDetail = () => {
         <h1>{episode.name}</h1>
         <h3>Characters</h3>
         <div>
-          {characters.map((character, index) => {
-            return (
-              <div key={index}>
-                <h4>
-                  <Link to={`/character/${character.id}`}>
-                    {character.name}
-                  </Link>
-                </h4>
-                <img src={character.image} alt={character.name} />
-              </div>
-            );
-          })}
+          <Grid container spacing={4} style={{ padding: "4%" }}>
+            {characterCard}
+          </Grid>
         </div>
       </div>
     );

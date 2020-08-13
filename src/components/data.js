@@ -4,9 +4,9 @@ import axios from "axios";
 
 import { TextField } from "@material-ui/core";
 
-import ShowAllEpisodes from "./showAllEpisodes";
-import ShowAllLocations from "./showAllLocations";
-import ShowAllCharacters from "./showAllCharacters";
+import ShowAllEpisodes from "./Episodes/showAllEpisodes";
+import ShowAllLocations from "./Locations/showAllLocations";
+import ShowAllCharacters from "./Characters/showAllCharacters";
 
 const Data = () => {
   const [info, setInfo] = useState({});
@@ -36,6 +36,7 @@ const Data = () => {
   const querySelector = (event) => {
     setPage(1);
     setQuery(event.target.value);
+    setSearchQuery("");
   };
 
   const nextPageHandler = () => {
@@ -48,7 +49,6 @@ const Data = () => {
 
   const props = {
     querySelector,
-    query,
     data,
     page,
     prevPageHandler,
@@ -65,7 +65,16 @@ const Data = () => {
           <option label="characters">character</option>
           <option label="locations">location</option>
         </select>
-        <input onChange={searchSubmit}></input>
+        <TextField
+          id="filled-full-width"
+          label="search for an episode..."
+          onChange={searchSubmit}
+          style={{ margin: 12, paddingRight: "2%" }}
+          placeholder="search for an episode..."
+          fullWidth
+          margin="normal"
+          variant="filled"
+        />
         <ShowAllEpisodes {...props} />
       </>
     );
@@ -100,7 +109,16 @@ const Data = () => {
           <option label="characters">character</option>
           <option label="locations">location</option>
         </select>
-        <input onChange={searchSubmit}></input>
+        <TextField
+          id="filled-full-width"
+          label="search for a location..."
+          onChange={searchSubmit}
+          style={{ margin: 12, paddingRight: "2%" }}
+          placeholder="search for a location..."
+          fullWidth
+          margin="normal"
+          variant="filled"
+        />
         <ShowAllLocations {...props} />
       </div>
     );

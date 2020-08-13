@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardMedia, CardContent, Typography } from "@material-ui/core";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  CardActionArea,
+  Typography,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  media: {
+  image: {
     height: "300px",
     width: "100%",
   },
@@ -27,20 +33,20 @@ const LayoutForCharacters = (props) => {
   return (
     <div>
       <Card className={classes.root}>
-        <CardMedia
-          gutterBottom
-          className={classes.media}
-          image={image}
-          alt="Card image cap"
-        />
+        <CardActionArea>
+          <CardMedia
+            image={!image ? "not loading" : image}
+            className={classes.image}
+          />
 
-        <CardContent>
-          <Typography className={classes.typography}>
-            <Link className={classes.link} to={`/character/${id}`}>
-              {name}
-            </Link>
-          </Typography>
-        </CardContent>
+          <CardContent>
+            <Typography className={classes.typography}>
+              <Link className={classes.link} to={`/character/${id}`}>
+                {name}
+              </Link>
+            </Typography>
+          </CardContent>
+        </CardActionArea>
       </Card>
     </div>
   );

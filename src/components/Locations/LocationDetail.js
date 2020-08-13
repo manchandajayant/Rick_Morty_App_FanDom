@@ -1,7 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useCallback, useEffect, useState, Fragment } from "react";
+import { useParams } from "react-router-dom";
+
+import { Grid } from "@material-ui/core";
 
 import axios from "axios";
+
+import LayoutForCharacters from "../Characters/LayoutForCharacters";
 
 var arrayOfCharacterNumbers = [];
 
@@ -47,7 +51,16 @@ const LocationDetail = () => {
     }
   }, [location.residents, fetchAndExtract]);
 
-  console.log(residents);
+  const characterCard = residents.map((propsObject, index) => {
+    return (
+      <Fragment key={index}>
+        <Grid item xs={12} sm={6} md={4}>
+          <LayoutForCharacters {...propsObject} />
+        </Grid>
+      </Fragment>
+    );
+  });
+
   if (!load) {
     return <h1>Loading...</h1>;
   } else {
@@ -57,13 +70,9 @@ const LocationDetail = () => {
         <h2>Dimension:{location.dimension}</h2>
         <h2>Type:{location.type}</h2>
         <h3>Residents</h3>
-        {residents.map((resident, index) => {
-          return (
-            <h4 key={index}>
-              <Link to={`/character/${resident.id}`}>{resident.name}</Link>
-            </h4>
-          );
-        })}
+        <Grid container spacing={4} style={{ padding: "4%" }}>
+          {characterCard}
+        </Grid>
       </div>
     );
   }
