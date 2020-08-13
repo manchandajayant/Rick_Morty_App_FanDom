@@ -4,24 +4,36 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Episodes = () => {
-  const [data, setdata] = useState([]);
+  const [info, setInfo] = useState({});
+  const [episodes, setEpisodes] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios("https://rickandmortyapi.com/api/episode");
-
-      setdata(result.data.results);
+    const fetchEpisodes = async () => {
+      const result = await axios(
+        `https://rickandmortyapi.com/api/episode/?page=${page}`
+      );
+      console.log(result.data.info);
+      setInfo(result.data.info);
+      setEpisodes(result.data.results);
     };
-    fetchData();
-  }, []);
+    fetchEpisodes();
+  }, [page]);
 
-  console.log(data);
-  if (!data) {
+  const nextPageHandler = () => {
+    return page <= info.pages ? setPage(page + 1) : setPage(1);
+  };
+
+  const prevPageHandler = () => {
+    return page > 1 ? setPage(page - 1) : setPage(info.pages);
+  };
+
+  if (!episodes) {
     return <h1>Loading...</h1>;
   } else {
     return (
       <div>
-        {data.map((episode, index) => {
+        {episodes.map((episode, index) => {
           return (
             <div key={index}>
               <h1>
@@ -31,6 +43,8 @@ const Episodes = () => {
             </div>
           );
         })}
+        <button onClick={prevPageHandler}>prev</button>
+        <button onClick={nextPageHandler}>next</button>
       </div>
     );
   }

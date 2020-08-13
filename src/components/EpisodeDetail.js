@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useCallback } from "react";
+import { useParams, Link } from "react-router-dom";
+import axios from "axios";
 
 var arrayOfCharacterNumbers = [];
 
@@ -9,25 +10,37 @@ const EpisodeDetail = () => {
 
   const { id } = useParams();
 
-  useEffect(() => {
-    fetch(`https://rickandmortyapi.com/api/episode/${id}`)
-      .then((res) => res.json())
-      .then(setEpisode);
+  const fetchEpisode = useCallback(async () => {
+    const result = await axios(`https://rickandmortyapi.com/api/episode/${id}`);
+
+    setEpisode(result.data);
   }, [id]);
 
   useEffect(() => {
-    if (episode.characters) {
-      const arr = episode.characters.map((character) => {
-        return arrayOfCharacterNumbers.push(parseInt(character.match(/\d+/)));
-      });
-      console.log(arr, "arr");
-      fetch(`https://rickandmortyapi.com/api/character/${arr}`)
-        .then((res) => res.json())
-        .then(setCharacters);
-    }
-  }, [episode]);
+    fetchEpisode();
+  }, [id, fetchEpisode]);
 
-  console.log(characters, "chars");
+  const fetchAndExtract = useCallback(() => {
+    const extractNumbersFromUrlString = episode.characters.map((character) => {
+      return arrayOfCharacterNumbers.push(parseInt(character.match(/\d+/)));
+    });
+
+    const fetchCharacters = async () => {
+      const result = await axios(
+        `https://rickandmortyapi.com/api/character/${extractNumbersFromUrlString}`
+      );
+      setCharacters(result.data);
+    };
+    fetchCharacters();
+  }, [episode.characters]);
+
+  useEffect(() => {
+    if (episode.characters) {
+      fetchAndExtract();
+    }
+  }, [episode, fetchAndExtract]);
+
+  console.log(characters);
   if (!episode) {
     return <div>Loading...</div>;
   } else {
@@ -37,7 +50,16 @@ const EpisodeDetail = () => {
         <h3>Characters</h3>
         <div>
           {characters.map((character, index) => {
-            return <h4 key={index}>{character.name}</h4>;
+            return (
+              <div key={index}>
+                <h4>
+                  <Link to={`/characters/${character.id}`}>
+                    {character.name}
+                  </Link>
+                </h4>
+                <img src={character.image} alt={character.name} />
+              </div>
+            );
           })}
         </div>
       </div>
