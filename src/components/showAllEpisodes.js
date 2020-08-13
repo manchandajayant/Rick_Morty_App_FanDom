@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -8,17 +8,18 @@ const Episodes = () => {
   const [episodes, setEpisodes] = useState([]);
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    const fetchEpisodes = async () => {
-      const result = await axios(
-        `https://rickandmortyapi.com/api/episode/?page=${page}`
-      );
-      console.log(result.data.info);
-      setInfo(result.data.info);
-      setEpisodes(result.data.results);
-    };
-    fetchEpisodes();
+  const fetchEpisodes = useCallback(async () => {
+    const result = await axios(
+      `https://rickandmortyapi.com/api/episode/?page=${page}`
+    );
+    console.log(result.data.info);
+    setInfo(result.data.info);
+    setEpisodes(result.data.results);
   }, [page]);
+
+  useEffect(() => {
+    fetchEpisodes();
+  }, [fetchEpisodes]);
 
   const nextPageHandler = () => {
     return page <= info.pages ? setPage(page + 1) : setPage(1);
@@ -28,7 +29,7 @@ const Episodes = () => {
     return page > 1 ? setPage(page - 1) : setPage(info.pages);
   };
 
-  if (!episodes) {
+  if (episodes.length < 1) {
     return <h1>Loading...</h1>;
   } else {
     return (

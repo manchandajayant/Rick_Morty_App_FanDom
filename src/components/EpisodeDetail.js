@@ -7,12 +7,13 @@ var arrayOfCharacterNumbers = [];
 const EpisodeDetail = () => {
   const [episode, setEpisode] = useState({});
   const [characters, setCharacters] = useState([]);
-
+  const [load, setload] = useState(false);
   const { id } = useParams();
 
   const fetchEpisode = useCallback(async () => {
     const result = await axios(`https://rickandmortyapi.com/api/episode/${id}`);
-
+    console.log(result);
+    setload(true);
     setEpisode(result.data);
   }, [id]);
 
@@ -29,6 +30,7 @@ const EpisodeDetail = () => {
       const result = await axios(
         `https://rickandmortyapi.com/api/character/${extractNumbersFromUrlString}`
       );
+
       setCharacters(result.data);
     };
     fetchCharacters();
@@ -41,7 +43,7 @@ const EpisodeDetail = () => {
   }, [episode, fetchAndExtract]);
 
   console.log(characters);
-  if (!episode) {
+  if (!load) {
     return <div>Loading...</div>;
   } else {
     return (

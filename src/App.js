@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Episodes from "./components/showAllEpisodes";
 import EpisodeDetail from "./components/EpisodeDetail";
 import CharacterDetail from "./components/CharacterDetail";
+import LocationDetail from "./components/LocationDetail";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route exact path="/episodes" component={Episodes} />
       <Route exact path="/episodes/:id" component={EpisodeDetail} />
       <Route exact path="/characters/:id" component={CharacterDetail} />
+      <Route exact path="/location/:id" component={LocationDetail} />
     </div>
   );
 }
