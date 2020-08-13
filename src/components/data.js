@@ -15,6 +15,8 @@ const Data = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(1);
 
+  const totalPages = info.pages;
+
   const fetchData = useCallback(async () => {
     const result = await axios(
       `https://rickandmortyapi.com/api/${query}/?page=${page}&name=${searchQuery}`
@@ -53,6 +55,7 @@ const Data = () => {
     page,
     prevPageHandler,
     nextPageHandler,
+    totalPages,
   };
 
   if (data.length < 1) {
@@ -60,11 +63,13 @@ const Data = () => {
   } else if (query === "episode") {
     return (
       <>
-        <select value={query} onChange={querySelector}>
-          <option label="episodes">episode</option>
-          <option label="characters">character</option>
-          <option label="locations">location</option>
-        </select>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <select value={query} onChange={querySelector}>
+            <option label="episodes">episode</option>
+            <option label="characters">character</option>
+            <option label="locations">location</option>
+          </select>
+        </div>
         <TextField
           id="filled-full-width"
           label="search for an episode..."
@@ -81,12 +86,13 @@ const Data = () => {
   } else if (query === "character") {
     return (
       <div>
-        <select value={query} onChange={querySelector}>
-          <option label="episodes">episode</option>
-          <option label="characters">character</option>
-          <option label="locations">location</option>
-        </select>
-
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <select value={query} onChange={querySelector}>
+            <option label="episodes">episode</option>
+            <option label="characters">character</option>
+            <option label="locations">location</option>
+          </select>
+        </div>
         <TextField
           id="filled-full-width"
           label="search for a character..."
@@ -104,11 +110,13 @@ const Data = () => {
   } else if (query === "location") {
     return (
       <div>
-        <select value={query} onChange={querySelector}>
-          <option label="episodes">episode</option>
-          <option label="characters">character</option>
-          <option label="locations">location</option>
-        </select>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <select value={query} onChange={querySelector}>
+            <option label="episodes">episode</option>
+            <option label="characters">character</option>
+            <option label="locations">location</option>
+          </select>
+        </div>
         <TextField
           id="filled-full-width"
           label="search for a location..."

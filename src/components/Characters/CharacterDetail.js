@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 
-import { Typography, Container } from "@material-ui/core";
-
 import axios from "axios";
 
-import useStyles from "./StylesForCharacterDetail";
+import { Typography } from "@material-ui/core";
+
+import useStyles from "./Styles";
 
 const CharacterDetail = () => {
   const classes = useStyles();
@@ -34,11 +34,13 @@ const CharacterDetail = () => {
     const locationId = parseInt(character.location.url.match(/\d+/));
 
     return (
-      <Container className={classes.container}>
+      <div className={classes.container}>
         <Typography variant="h2" className={classes.title}>
           {character.name}
         </Typography>
-        <img src={character.image} alt={character.name} />
+        <div className={classes.image}>
+          <img src={character.image} alt={character.name} />
+        </div>
         <Typography className={classes.description}>
           Gender:{character.gender}
         </Typography>
@@ -56,13 +58,15 @@ const CharacterDetail = () => {
         <Typography className={classes.description}>
           Status:{character.status}
         </Typography>
-        Type :{" "}
+
         {character.type === "" ? (
-          <Typography>Unknown</Typography>
+          <Typography className={classes.type}>Type:Unknown</Typography>
         ) : (
-          <Typography>{character.type}</Typography>
+          <Typography className={classes.type}>
+            Type :{character.type}
+          </Typography>
         )}
-      </Container>
+      </div>
     );
   }
 };

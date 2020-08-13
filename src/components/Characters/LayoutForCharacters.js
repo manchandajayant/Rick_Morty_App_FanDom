@@ -7,24 +7,8 @@ import {
   CardActionArea,
   Typography,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
-  image: {
-    height: "300px",
-    width: "100%",
-  },
-  typography: {
-    display: "flex",
-    justifyContent: "center",
-
-    letterSpacing: "7px",
-  },
-  link: {
-    color: "black",
-    textDecoration: "none",
-  },
-});
+import useStyles from "./Styles";
 
 const LayoutForCharacters = (props) => {
   const classes = useStyles();
@@ -34,10 +18,12 @@ const LayoutForCharacters = (props) => {
     <div>
       <Card className={classes.root}>
         <CardActionArea>
-          <CardMedia
-            image={!image ? "not loading" : image}
-            className={classes.image}
-          />
+          <Link to={`/character/${id}`}>
+            <CardMedia
+              image={!image ? "not loading" : image}
+              className={classes.image}
+            />
+          </Link>
 
           <CardContent>
             <Typography className={classes.typography}>

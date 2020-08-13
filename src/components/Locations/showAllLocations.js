@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Typography, Button } from "@material-ui/core";
 
+import useStyles from "./styles";
 import LocationListLayout from "./LocationListLayout";
 
 const ShowAllLocations = (props) => {
+  const classes = useStyles();
   const { data, prevPageHandler, nextPageHandler, page } = props;
   const locationListCard = data.map((propsObject, index) => {
     return (
@@ -15,16 +17,19 @@ const ShowAllLocations = (props) => {
       </Fragment>
     );
   });
+
   return (
     <div>
-      {" "}
-      <div>
-        <Grid container spacing={4} style={{ padding: "4%" }}>
-          {locationListCard}
-        </Grid>
-        <h5>Page no.{page}</h5>
-        <button onClick={prevPageHandler}>prev</button>
-        <button onClick={nextPageHandler}>next</button>
+      <div className={classes.pages}>
+        <Button onClick={prevPageHandler}>prev</Button>
+        <Button onClick={nextPageHandler}>next</Button>
+      </div>
+      <Grid container spacing={4} className={classes.container} style={{}}>
+        {locationListCard}
+      </Grid>
+
+      <div className={classes.pages}>
+        <Typography>Page no.{page}</Typography>
       </div>
     </div>
   );

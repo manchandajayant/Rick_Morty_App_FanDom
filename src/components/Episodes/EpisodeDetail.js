@@ -3,13 +3,15 @@ import { useParams } from "react-router-dom";
 
 import axios from "axios";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
 import LayoutForCharacters from "../Characters/LayoutForCharacters";
+import useStyles from "./styles";
 
 var arrayOfCharacterNumbers = [];
 
 const EpisodeDetail = () => {
+  const classes = useStyles();
   const [episode, setEpisode] = useState({});
   const [characters, setCharacters] = useState([]);
   const [load, setload] = useState(false);
@@ -24,16 +26,19 @@ const EpisodeDetail = () => {
 
   useEffect(() => {
     fetchEpisode();
+    if (fetchEpisode) {
+      arrayOfCharacterNumbers = [];
+    }
   }, [id, fetchEpisode]);
 
   const fetchAndExtract = useCallback(() => {
-    const extractNumbersFromUrlString = episode.characters.map((character) => {
+    episode.characters.map((character) => {
       return arrayOfCharacterNumbers.push(parseInt(character.match(/\d+/)));
     });
 
     const fetchCharacters = async () => {
       const result = await axios(
-        `https://rickandmortyapi.com/api/character/${extractNumbersFromUrlString}`
+        `https://rickandmortyapi.com/api/character/${arrayOfCharacterNumbers}`
       );
 
       setCharacters(result.data);
@@ -47,6 +52,7 @@ const EpisodeDetail = () => {
     }
   }, [episode, fetchAndExtract]);
 
+  console.log(characters);
   const characterCard = characters.map((propsObject, index) => {
     return (
       <Fragment key={index}>
@@ -61,8 +67,12 @@ const EpisodeDetail = () => {
   } else {
     return (
       <div>
-        <h1>{episode.name}</h1>
-        <h3>Characters</h3>
+        <div className={classes.episode}>
+          <Typography variant="h4">{episode.name}</Typography>
+        </div>
+        <div className={classes.episode}>
+          <Typography variant="h4">Characters</Typography>
+        </div>
         <div>
           <Grid container spacing={4} style={{ padding: "4%" }}>
             {characterCard}

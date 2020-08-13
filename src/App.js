@@ -6,10 +6,22 @@ import CharacterDetail from "./components/Characters/CharacterDetail";
 import LocationDetail from "./components/Locations/LocationDetail";
 import Homepage from "./components/Homepage";
 import "./css/app.css";
+import { Typography } from "@material-ui/core";
 function App() {
   return (
     <div>
-      <h1>Rick and Morty App</h1>
+      <Typography
+        variant="h4"
+        style={{
+          color: "rgba(0,150,190)",
+          display: "flex",
+          justifyContent: "center",
+          paddingTop: "2%",
+          paddingBottom: "5% ",
+        }}
+      >
+        Rick and Morty App
+      </Typography>
 
       <Route exact path="/" component={Homepage} />
       <Route exact path="/data" component={Data} />

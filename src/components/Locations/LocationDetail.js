@@ -1,15 +1,17 @@
 import React, { useCallback, useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
 import axios from "axios";
 
 import LayoutForCharacters from "../Characters/LayoutForCharacters";
+import useStyles from "./styles";
 
 var arrayOfCharacterNumbers = [];
 
 const LocationDetail = () => {
+  const classes = useStyles();
   const [location, setLocation] = useState({});
   const [residents, setResidents] = useState([]);
   const [load, setload] = useState(false);
@@ -27,16 +29,19 @@ const LocationDetail = () => {
 
   useEffect(() => {
     fetchLocation();
+    if (fetchLocation()) {
+      arrayOfCharacterNumbers = [];
+    }
   }, [fetchLocation]);
 
   const fetchAndExtract = useCallback(() => {
-    const extractNumbersFromUrlString = location.residents.map((resident) => {
+    location.residents.map((resident) => {
       return arrayOfCharacterNumbers.push(parseInt(resident.match(/\d+/)));
     });
 
     const fetchResidents = async () => {
       const result = await axios(
-        `https://rickandmortyapi.com/api/character/${extractNumbersFromUrlString}`
+        `https://rickandmortyapi.com/api/character/${arrayOfCharacterNumbers}`
       );
       Array.isArray(result.data)
         ? setResidents(result.data)
@@ -50,7 +55,7 @@ const LocationDetail = () => {
       fetchAndExtract();
     }
   }, [location.residents, fetchAndExtract]);
-
+  console.log(residents);
   const characterCard = residents.map((propsObject, index) => {
     return (
       <Fragment key={index}>
@@ -66,11 +71,23 @@ const LocationDetail = () => {
   } else {
     return (
       <div>
-        <h1>Name:{location.name}</h1>
-        <h2>Dimension:{location.dimension}</h2>
-        <h2>Type:{location.type}</h2>
-        <h3>Residents</h3>
-        <Grid container spacing={4} style={{ padding: "4%" }}>
+        <div>
+          <div className={classes.detail}>
+            <Typography variant="h4"> {location.name}</Typography>
+          </div>
+          <div className={classes.detail}>
+            <Typography variant="h4">
+              Dimension: {location.dimension}
+            </Typography>
+          </div>
+          <div className={classes.detail}>
+            <Typography variant="h4">Type: {location.type}</Typography>
+          </div>
+          <div className={classes.detail}>
+            <Typography variant="h5">Residents</Typography>
+          </div>
+        </div>
+        <Grid container spacing={4} className={classes.container}>
           {characterCard}
         </Grid>
       </div>

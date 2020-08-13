@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
 
-import { Grid } from "@material-ui/core";
+import { Grid, Typography, Button } from "@material-ui/core";
 
+import useStyles from "./styles";
 import EpisodeListLayout from "./EpisodeListLayout";
 
 const ShowAllEpisodes = (props) => {
+  const classes = useStyles();
   const { data, prevPageHandler, nextPageHandler, page } = props;
 
   const episodeListCard = data.map((propsObject, index) => {
@@ -21,14 +23,16 @@ const ShowAllEpisodes = (props) => {
   return (
     <div>
       {" "}
-      <>
-        <Grid container spacing={4} style={{ padding: "4%" }}>
-          {episodeListCard}
-        </Grid>
-        <h5>Page no.{page}</h5>
-        <button onClick={prevPageHandler}>prev</button>
-        <button onClick={nextPageHandler}>next</button>
-      </>
+      <div className={classes.pages}>
+        <Button onClick={prevPageHandler}>prev</Button>
+        <Button onClick={nextPageHandler}>next</Button>
+      </div>
+      <Grid container spacing={4} style={{ padding: "4%" }}>
+        {episodeListCard}
+      </Grid>
+      <div className={classes.pages}>
+        <Typography>Page no.{page}</Typography>
+      </div>
     </div>
   );
 };
