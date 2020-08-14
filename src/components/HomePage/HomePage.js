@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
 
 import axios from "axios";
 
 import { TextField, Typography } from "@material-ui/core";
 
-import ShowAllCharacters from "../Characters/showAllCharacters";
+import ShowAllCharacters from "../Characters/ShowAllCharacters";
 import useStyles from "./styles";
 
 const HomePage = () => {
@@ -56,15 +55,9 @@ const HomePage = () => {
   } else {
     return (
       <div>
-        <div className={classes.div}>
-          <Typography className={classes.list}>
-            <Link to="/locations">Show All Locations</Link>
-          </Typography>
-          {"  "}
-          <Typography>
-            <Link to="/episodes">Show All Episodes</Link>
-          </Typography>
-        </div>
+        <Typography variant="h4" className={classes.title}>
+          Characters
+        </Typography>
         <TextField
           id="filled-full-width"
           label="search for a character..."

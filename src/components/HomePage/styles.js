@@ -5,12 +5,10 @@ const useStyles = makeStyles(() => ({
     margin: 12,
     paddingRight: "2%",
   },
-  div: {
+
+  title: {
     display: "flex",
     justifyContent: "center",
-  },
-  list: {
-    marginLeft: "4%",
   },
 }));
 

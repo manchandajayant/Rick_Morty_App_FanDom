@@ -52,6 +52,9 @@ const ShowAllLocations = (props) => {
 
   return (
     <div>
+      <Typography variant="h4" className={classes.heading}>
+        Locations
+      </Typography>
       <TextField
         id="filled-full-width"
         label="search for a character..."

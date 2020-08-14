@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Dosis, sans-serif",
     letterSpacing: "3px",
   },
+  heading: {
+    display: "flex",
+    justifyContent: "center",
+  },
 }));
 
 export default useStyles;

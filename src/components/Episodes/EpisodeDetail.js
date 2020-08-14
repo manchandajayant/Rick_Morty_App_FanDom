@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback, Fragment } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import axios from "axios";
 
@@ -67,9 +67,6 @@ const EpisodeDetail = () => {
   } else {
     return (
       <div>
-        <Typography className={classes.episode}>
-          <Link to="/homepage"> Go Back</Link>
-        </Typography>
         <div className={classes.episode}>
           <Typography variant="h4">{episode.name}</Typography>
         </div>

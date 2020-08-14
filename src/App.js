@@ -8,11 +8,14 @@ import EpisodeDetail from "./components/Episodes/EpisodeDetail";
 import CharacterDetail from "./components/Characters/CharacterDetail";
 import LocationDetail from "./components/Locations/LocationDetail";
 import LandingPage from "./components/LandingPage/LandingPage";
-import ShowAllLocations from "./components/Locations/showAllLocations";
+import ShowAllLocations from "./components/Locations/ShowAllLocations";
+import ShowAllEpisodes from "./components/Episodes/ShowAllEpisodes";
+import NavBar from "./components/Navbar/NavBar";
 
 function App() {
   return (
     <div>
+      <NavBar />
       <Typography
         variant="h4"
         style={{
@@ -31,7 +34,7 @@ function App() {
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/homepage" component={HomePage} />
       <Route exact path="/location" component={ShowAllLocations} />
-      <Route exact path="/episode" component={ShowAllLocations} />
+      <Route exact path="/episode" component={ShowAllEpisodes} />
       <Route exact path="/episode/:id" component={EpisodeDetail} />
       <Route exact path="/character/:id" component={CharacterDetail} />
       <Route exact path="/location/:id" component={LocationDetail} />

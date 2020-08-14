@@ -53,6 +53,9 @@ const ShowAllEpisodes = (props) => {
   return (
     <div>
       {" "}
+      <Typography variant="h4" className={classes.heading}>
+        Episodes
+      </Typography>
       <TextField
         id="filled-full-width"
         label="search for a character..."
