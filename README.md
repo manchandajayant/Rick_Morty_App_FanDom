@@ -1,4 +1,4 @@
-Rick and Morty Info App
+## Rick and Morty Info App
 
 Made using the [Rick and Morty Api](https://rickandmortyapi.com/)
 

@@ -33,9 +33,6 @@ const CharacterDetail = () => {
 
     return (
       <div className={classes.container}>
-        <Typography className={classes.description}>
-          <Link to="/homepage"> Go Back</Link>
-        </Typography>
         <Typography variant="h2" className={classes.title}>
           {character.name}
         </Typography>
