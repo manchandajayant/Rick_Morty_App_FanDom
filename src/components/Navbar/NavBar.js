@@ -12,11 +12,13 @@ const NavBar = () => {
     <div className={classes.root}>
       <AppBar position="sticky" className={classes.appbar}>
         <Toolbar variant="dense">
-          <img
-            className={classes.brand}
-            src="https://repository-images.githubusercontent.com/120371205/b6740400-92d4-11ea-8a13-d5f6e0558e9b"
-            alt="nothing"
-          />
+          <Link to="/">
+            <img
+              className={classes.brand}
+              src="https://repository-images.githubusercontent.com/120371205/b6740400-92d4-11ea-8a13-d5f6e0558e9b"
+              alt="nothing"
+            />
+          </Link>
           <Typography className={classes.navlinks}>
             <Link to="/homepage" className={classes.links}>
               Home
