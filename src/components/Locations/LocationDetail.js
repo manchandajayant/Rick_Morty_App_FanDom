@@ -73,18 +73,25 @@ const LocationDetail = () => {
       <div>
         <div>
           <div className={classes.detail}>
-            <Typography variant="h4"> {location.name}</Typography>
+            <Typography variant="h4" className={classes.des}>
+              {" "}
+              {location.name}
+            </Typography>
           </div>
           <div className={classes.detail}>
-            <Typography variant="h4">
+            <Typography variant="h4" className={classes.des}>
               Dimension: {location.dimension}
             </Typography>
           </div>
           <div className={classes.detail}>
-            <Typography variant="h4">Type: {location.type}</Typography>
+            <Typography variant="h4" className={classes.des}>
+              Type: {location.type}
+            </Typography>
           </div>
           <div className={classes.detail}>
-            <Typography variant="h5">Residents</Typography>
+            <Typography variant="h5" className={classes.des}>
+              Residents
+            </Typography>
           </div>
         </div>
         <Grid container spacing={4} className={classes.container}>

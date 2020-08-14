@@ -33,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
+  des: {
+    fontFamily: "Dosis, sans-serif",
+    letterSpacing: "3px",
+  },
 }));
 
 export default useStyles;

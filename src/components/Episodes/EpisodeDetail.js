@@ -68,16 +68,24 @@ const EpisodeDetail = () => {
     return (
       <div>
         <div className={classes.episode}>
-          <Typography variant="h4">{episode.name}</Typography>
+          <Typography variant="h4" className={classes.des}>
+            {episode.name}
+          </Typography>
         </div>
         <div className={classes.episode}>
-          <Typography variant="h4">{episode.episode}</Typography>
+          <Typography variant="h4" className={classes.des}>
+            {episode.episode}
+          </Typography>
         </div>
         <div className={classes.episode}>
-          <Typography variant="h4">Aired on : {episode.air_date}</Typography>
+          <Typography variant="h4" className={classes.des}>
+            Aired on : {episode.air_date}
+          </Typography>
         </div>
         <div className={classes.episode}>
-          <Typography variant="h4">Characters</Typography>
+          <Typography variant="h4" className={classes.des}>
+            Characters
+          </Typography>
         </div>
         <div>
           <Grid container spacing={4} style={{ padding: "4%" }}>
