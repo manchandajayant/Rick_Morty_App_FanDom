@@ -73,7 +73,7 @@ const LocationDetail = () => {
       <div>
         <div>
           <Typography className={classes.detail}>
-            <Link to="/homepage"> Go Back</Link>
+            <Link to="/location"> Go Back</Link>
           </Typography>
           <div className={classes.detail}>
             <Typography variant="h4"> {location.name}</Typography>

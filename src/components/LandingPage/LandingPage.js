@@ -2,24 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 
+import useStyles from "./styles";
+
 const LandingPage = () => {
+  const classes = useStyles();
   return (
     <div className="bg">
       {" "}
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Typography
-          variant="h1"
-          style={{ fontFamily: "Dosis, sans-serif", letterSpacing: "3px" }}
-        >
+      <div className={classes.div}>
+        <Typography variant="h1" className={classes.typography}>
           {" "}
           Wubba lubba dub dub!!
         </Typography>
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Typography
-          variant="h1"
-          style={{ fontFamily: "Dosis, sans-serif", letterSpacing: "3px" }}
-        >
+      <div className={classes.div}>
+        <Typography variant="h1" className={classes.typography}>
           <Link to="/homepage">GET STARTED</Link>
         </Typography>
       </div>
