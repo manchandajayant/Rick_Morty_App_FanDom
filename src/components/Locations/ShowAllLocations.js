@@ -14,6 +14,7 @@ const ShowAllLocations = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(1);
 
+   //Data Fetch From the API for locations
   const fetchData = useCallback(async () => {
     const result = await axios(
       `https://rickandmortyapi.com/api/location/?page=${page}&name=${searchQuery}`
@@ -27,6 +28,7 @@ const ShowAllLocations = (props) => {
     fetchData();
   }, [fetchData]);
 
+  //functionality for pagination
   const nextPageHandler = () => {
     return page < info.pages ? setPage(page + 1) : setPage(1);
   };
@@ -35,6 +37,7 @@ const ShowAllLocations = (props) => {
     return page > 1 ? setPage(page - 1) : setPage(info.pages);
   };
 
+  //functionality for search
   const searchSubmit = (e) => {
     e.preventDefault();
     setSearchQuery(e.target.value);
