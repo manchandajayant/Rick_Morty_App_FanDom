@@ -3,7 +3,7 @@ import SpotifyPlayer from "react-spotify-player";
 
 const size = {
   width: "100%",
-  height: 100,
+  height: 200,
 };
 const view = "coverart"; // or 'coverart'
 const theme = "black"; // or 'white'
