@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Rick and Morty Info App 
+
+Made using the [Rick and Morty Api]
+[Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
