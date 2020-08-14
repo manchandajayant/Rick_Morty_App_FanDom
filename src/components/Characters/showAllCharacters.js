@@ -2,9 +2,8 @@ import React, { Fragment } from "react";
 
 import { Grid, Typography, Button } from "@material-ui/core";
 
-import LayoutForCharacters from "./LayoutForCharacters";
-
 import useStyles from "./Styles";
+import LayoutForCharacters from "./LayoutForCharacters";
 
 const ShowAllCharacters = (props) => {
   const classes = useStyles();
@@ -31,7 +30,7 @@ const ShowAllCharacters = (props) => {
         {characterCard}
       </Grid>
       <div className={classes.pages}>
-        <Typography>Page no.{page}</Typography>
+        <Typography>Pg{page}</Typography>
       </div>
     </div>
   );

@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback, Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import axios from "axios";
 
 import { Grid, Typography } from "@material-ui/core";
 
-import LayoutForCharacters from "../Characters/LayoutForCharacters";
 import useStyles from "./styles";
+import LayoutForCharacters from "../Characters/LayoutForCharacters";
 
 var arrayOfCharacterNumbers = [];
 
@@ -62,11 +62,15 @@ const EpisodeDetail = () => {
       </Fragment>
     );
   });
+
   if (!load) {
     return <div>Loading...</div>;
   } else {
     return (
       <div>
+        <Typography>
+          <Link to="/homepage">Back to Episodes</Link>
+        </Typography>
         <div className={classes.episode}>
           <Typography variant="h4">{episode.name}</Typography>
         </div>

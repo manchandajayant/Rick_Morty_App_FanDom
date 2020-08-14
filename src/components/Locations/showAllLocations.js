@@ -29,7 +29,7 @@ const ShowAllLocations = (props) => {
       </Grid>
 
       <div className={classes.pages}>
-        <Typography>Page no.{page}</Typography>
+        <Typography>Pg {page}</Typography>
       </div>
     </div>
   );
