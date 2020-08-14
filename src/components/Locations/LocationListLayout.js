@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { CardContent, Card, Typography } from "@material-ui/core";
 
-import useStyles from "./styles";
+import useStyles from "./Styles";
 
 export default function SimpleCard(props) {
   const classes = useStyles();

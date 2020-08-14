@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 
-import useStyles from "./styles";
+import useStyles from "./Styles";
 
 const LandingPage = () => {
   const classes = useStyles();

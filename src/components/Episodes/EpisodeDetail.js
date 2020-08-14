@@ -5,7 +5,7 @@ import axios from "axios";
 
 import { Grid, Typography } from "@material-ui/core";
 
-import useStyles from "./styles";
+import useStyles from "./Styles";
 import LayoutForCharacters from "../Characters/LayoutForCharacters";
 
 var arrayOfCharacterNumbers = [];

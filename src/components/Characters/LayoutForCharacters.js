@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import useStyles from "./styles";
+import useStyles from "./Styles";
 
 const LayoutForCharacters = (props) => {
   const classes = useStyles();

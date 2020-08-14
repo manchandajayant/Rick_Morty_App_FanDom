@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { Grid, Typography, Button, TextField } from "@material-ui/core";
 
-import useStyles from "./styles";
+import useStyles from "./Styles";
 import EpisodeListLayout from "./EpisodeListLayout";
 
 const ShowAllEpisodes = (props) => {

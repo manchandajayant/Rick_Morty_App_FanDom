@@ -5,7 +5,7 @@ import axios from "axios";
 import { TextField, Typography } from "@material-ui/core";
 
 import ShowAllCharacters from "../Characters/ShowAllCharacters";
-import useStyles from "./styles";
+import useStyles from "./Styles";
 
 const HomePage = () => {
   const classes = useStyles();

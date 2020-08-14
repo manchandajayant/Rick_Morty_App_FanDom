@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 
-import useStyles from "./styles";
+import useStyles from "./Styles";
 
 const NavBar = () => {
   const classes = useStyles();

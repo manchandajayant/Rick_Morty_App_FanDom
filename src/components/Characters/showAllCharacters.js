@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 import { Grid, Typography, Button } from "@material-ui/core";
 
-import useStyles from "./styles";
+import useStyles from "./Styles";
 import LayoutForCharacters from "./LayoutForCharacters";
 
 const ShowAllCharacters = (props) => {
