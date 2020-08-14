@@ -17,6 +17,7 @@ const EpisodeDetail = () => {
   const [load, setload] = useState(false);
   const { id } = useParams();
 
+  //Data Fetch From the API for single episode
   const fetchEpisode = useCallback(async () => {
     const result = await axios(`https://rickandmortyapi.com/api/episode/${id}`);
     console.log(result);
@@ -31,6 +32,7 @@ const EpisodeDetail = () => {
     }
   }, [id, fetchEpisode]);
 
+  //extract numbers from url string and pushed into an array
   const fetchAndExtract = useCallback(() => {
     episode.characters.map((character) => {
       return arrayOfCharacterNumbers.push(parseInt(character.match(/\d+/)));
