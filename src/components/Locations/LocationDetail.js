@@ -18,6 +18,7 @@ const LocationDetail = () => {
 
   const { id } = useParams();
 
+  //Data Fetch From the API for single location
   const fetchLocation = useCallback(async () => {
     const result = await axios(
       `https://rickandmortyapi.com/api/location/${id}`
@@ -34,6 +35,7 @@ const LocationDetail = () => {
     }
   }, [fetchLocation]);
 
+   //extract numbers from url string and pushed into an array
   const fetchAndExtract = useCallback(() => {
     location.residents.map((resident) => {
       return arrayOfCharacterNumbers.push(parseInt(resident.match(/\d+/)));
