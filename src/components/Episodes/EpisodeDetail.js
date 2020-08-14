@@ -71,6 +71,12 @@ const EpisodeDetail = () => {
           <Typography variant="h4">{episode.name}</Typography>
         </div>
         <div className={classes.episode}>
+          <Typography variant="h4">{episode.episode}</Typography>
+        </div>
+        <div className={classes.episode}>
+          <Typography variant="h4">Aired on : {episode.air_date}</Typography>
+        </div>
+        <div className={classes.episode}>
           <Typography variant="h4">Characters</Typography>
         </div>
         <div>
