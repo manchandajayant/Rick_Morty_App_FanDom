@@ -5,7 +5,7 @@ import axios from "axios";
 import { Grid, Typography, Button, TextField } from "@material-ui/core";
 
 import useStyles from "./Styles";
-import LocationListLayout from "./LocationListLayout";
+import LocationListLayout from "./ShowAllLocationsLayout";
 
 const ShowAllLocations = (props) => {
   const classes = useStyles();

@@ -13,6 +13,7 @@ const CharacterDetail = () => {
   const [load, setload] = useState(false);
   const { id } = useParams();
 
+  //Data Fetch From the API for a single Character
   const fetchCharacter = useCallback(async () => {
     const result = await axios(
       `https://rickandmortyapi.com/api/character/${id}`
@@ -29,8 +30,8 @@ const CharacterDetail = () => {
   if (!load) {
     return <h1>Loading...</h1>;
   } else {
+    //taking the integer out of the url string
     const locationId = parseInt(character.location.url.match(/\d+/));
-
     return (
       <div className={classes.container}>
         <Typography variant="h2" className={classes.title}>
