@@ -2,7 +2,7 @@
 
 Made using the [Rick and Morty Api](https://rickandmortyapi.com/)
 
-## [Live Here](https://silly-rosalind-74877a.netlify.app/homepage)
+## [Live Here](https://silly-rosalind-74877a.netlify.app)
 
 ### User Stories
 
