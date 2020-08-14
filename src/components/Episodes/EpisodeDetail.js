@@ -52,7 +52,6 @@ const EpisodeDetail = () => {
     }
   }, [episode, fetchAndExtract]);
 
-  console.log(characters);
   const characterCard = characters.map((propsObject, index) => {
     return (
       <Fragment key={index}>
@@ -68,8 +67,8 @@ const EpisodeDetail = () => {
   } else {
     return (
       <div>
-        <Typography>
-          <Link to="/homepage">Back to Episodes</Link>
+        <Typography className={classes.episode}>
+          <Link to="/homepage"> Go Back</Link>
         </Typography>
         <div className={classes.episode}>
           <Typography variant="h4">{episode.name}</Typography>

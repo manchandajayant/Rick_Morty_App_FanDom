@@ -26,8 +26,6 @@ const CharacterDetail = () => {
     fetchCharacter();
   }, [fetchCharacter]);
 
-  console.log(character);
-
   if (!load) {
     return <h1>Loading...</h1>;
   } else {
@@ -35,6 +33,9 @@ const CharacterDetail = () => {
 
     return (
       <div className={classes.container}>
+        <Typography className={classes.description}>
+          <Link to="/homepage"> Go Back</Link>
+        </Typography>
         <Typography variant="h2" className={classes.title}>
           {character.name}
         </Typography>

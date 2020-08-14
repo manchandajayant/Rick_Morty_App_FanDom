@@ -19,7 +19,6 @@ const ShowAllEpisodes = (props) => {
     );
   });
 
-  console.log(props.data);
   return (
     <div>
       {" "}

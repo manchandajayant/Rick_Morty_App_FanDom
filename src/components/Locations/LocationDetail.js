@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState, Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import { Grid, Typography } from "@material-ui/core";
 
@@ -55,7 +55,7 @@ const LocationDetail = () => {
       fetchAndExtract();
     }
   }, [location.residents, fetchAndExtract]);
-  console.log(residents);
+
   const characterCard = residents.map((propsObject, index) => {
     return (
       <Fragment key={index}>
@@ -72,6 +72,9 @@ const LocationDetail = () => {
     return (
       <div>
         <div>
+          <Typography className={classes.detail}>
+            <Link to="/homepage"> Go Back</Link>
+          </Typography>
           <div className={classes.detail}>
             <Typography variant="h4"> {location.name}</Typography>
           </div>
