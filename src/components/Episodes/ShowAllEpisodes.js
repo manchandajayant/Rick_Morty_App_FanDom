@@ -14,6 +14,7 @@ const ShowAllEpisodes = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [page, setPage] = useState(1);
 
+  //Data Fetch From the API for episodes
   const fetchData = useCallback(async () => {
     const result = await axios(
       `https://rickandmortyapi.com/api/episode/?page=${page}&name=${searchQuery}`
@@ -35,6 +36,7 @@ const ShowAllEpisodes = (props) => {
     return page > 1 ? setPage(page - 1) : setPage(info.pages);
   };
 
+  //functionality for search
   const searchSubmit = (e) => {
     e.preventDefault();
     setSearchQuery(e.target.value);
