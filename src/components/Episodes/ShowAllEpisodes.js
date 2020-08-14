@@ -27,7 +27,8 @@ const ShowAllEpisodes = (props) => {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
+  
+//functionality for pagination
   const nextPageHandler = () => {
     return page < info.pages ? setPage(page + 1) : setPage(1);
   };
