@@ -22,6 +22,6 @@ Rick and Morty World:heavy_check_mark:
 
 ### Tech used
 
--React
--Axios
--Material UI
+- React
+- Axios
+- Material UI
