@@ -11,6 +11,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import ShowAllLocations from "./components/Locations/ShowAllLocations";
 import ShowAllEpisodes from "./components/Episodes/ShowAllEpisodes";
 import NavBar from "./components/Navbar/NavBar";
+import Spotifyplayer from "./components/Spotifyplayer";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
       >
         Rick and Morty Info App
       </Typography>
-
+      <Spotifyplayer />
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/homepage" component={HomePage} />
       <Route exact path="/location" component={ShowAllLocations} />
